@@ -5,6 +5,7 @@ import com.juarodriguezc.api.models.CharacterModel;
 import com.juarodriguezc.api.models.EpisodeModel;
 import com.juarodriguezc.api.repositorioes.CharacterRepository;
 import com.juarodriguezc.api.repositorioes.EpisodeRepository;
+import com.juarodriguezc.api.repositorioes.LocationRepository;
 import com.juarodriguezc.api.requestModels.CharacterAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,19 @@ public class EpisodeService {
     @Autowired
     CharacterRepository characterRepository;
 
+    @Autowired
+    LocationRepository locationRepository;
+
     public ArrayList<EpisodeModel> getAllEpisodes() {
         return (ArrayList<EpisodeModel>) episodeRepository.findAll();
     }
 
     public void deleteAllEpisodes(){
         episodeRepository.deleteAll();
+        characterRepository.deleteAll();
+
+        locationRepository.deleteAll();
+
     }
 
     public Optional<EpisodeModel> getEpisodeById(Long id) {

@@ -45,15 +45,6 @@ public class HappyNumberModel {
                 int iNum = Integer.parseInt(num);
                 sum += (iNum * iNum);
             }
-
-             
-            /*
-            while(numCopy > 0){
-                int digit = numCopy % 10;
-                sum += digit * digit;
-                numCopy /= 10;
-            }
-            */
             if(sum == 1){
                 this.isHappy = true;
                 break;

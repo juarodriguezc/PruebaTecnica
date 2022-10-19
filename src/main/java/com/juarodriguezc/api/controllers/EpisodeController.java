@@ -2,7 +2,6 @@ package com.juarodriguezc.api.controllers;
 
 import com.juarodriguezc.api.models.CharacterModel;
 import com.juarodriguezc.api.models.EpisodeModel;
-import com.juarodriguezc.api.models.LocationModel;
 import com.juarodriguezc.api.requestModels.CharacterAPI;
 import com.juarodriguezc.api.requestModels.EpisodeAPI;
 import com.juarodriguezc.api.requestModels.LocationAPI;
@@ -13,10 +12,7 @@ import com.juarodriguezc.api.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -39,6 +35,13 @@ public class EpisodeController {
     @GetMapping
     public List<EpisodeModel> getAllEpisodes() {
         return episodeService.getAllEpisodes();
+    }
+
+    @DeleteMapping
+    public ArrayList<EpisodeModel> deleteAllEpisodes(){
+        episodeService.deleteAllEpisodes();
+        ArrayList<EpisodeModel> episodeModels = episodeService.getAllEpisodes();
+        return episodeModels;
     }
 
 

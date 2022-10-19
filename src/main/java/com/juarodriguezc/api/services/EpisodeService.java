@@ -23,6 +23,10 @@ public class EpisodeService {
         return (ArrayList<EpisodeModel>) episodeRepository.findAll();
     }
 
+    public void deleteAllEpisodes(){
+        episodeRepository.deleteAll();
+    }
+
     public Optional<EpisodeModel> getEpisodeById(Long id) {
         return episodeRepository.findById(id);
     }

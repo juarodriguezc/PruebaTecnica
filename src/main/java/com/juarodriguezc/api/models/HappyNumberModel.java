@@ -38,7 +38,7 @@ public class HappyNumberModel {
         Integer numCopy = this.number;
 
         while(true){
-            /*
+            
             String strNumber = numCopy.toString();
             String[] lNum = strNumber.split("");
             for(String num : lNum){
@@ -46,12 +46,14 @@ public class HappyNumberModel {
                 sum += (iNum * iNum);
             }
 
-             */
+             
+            /*
             while(numCopy > 0){
                 int digit = numCopy % 10;
                 sum += digit * digit;
                 numCopy /= 10;
             }
+            */
             if(sum == 1){
                 this.isHappy = true;
                 break;
@@ -62,6 +64,7 @@ public class HappyNumberModel {
             }
             results.add(sum);
             numCopy = sum;
+            sum = 0;
         }
     }
 }

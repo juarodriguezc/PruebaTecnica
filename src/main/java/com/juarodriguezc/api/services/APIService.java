@@ -25,7 +25,7 @@ public class APIService {
     public List<EpisodeAPI> getAllEpisodes() {
         EpisodeResponseAPI apiEpisodes = null;
         try {
-            apiEpisodes = restClient.getForObject(url, EpisodeResponseAPI.class);
+            apiEpisodes = restClient.getForObject(url + "episode/", EpisodeResponseAPI.class);
         } catch (HttpClientErrorException e) {
             return null;
         }
@@ -62,12 +62,12 @@ public class APIService {
             LocationAPI location = null;
             try {
                 String lURL = character.getLocation().getUrl();
-                if(!lURL.equals(""))
+                if (!lURL.equals(""))
                     location = restClient.getForObject(lURL, LocationAPI.class);
             } catch (HttpClientErrorException e) {
                 return null;
             }
-            if(location != null){
+            if (location != null) {
                 hashLocations.put(character, location);
             }
         }

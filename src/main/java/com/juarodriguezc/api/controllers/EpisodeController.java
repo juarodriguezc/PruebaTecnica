@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.*;
 
-import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/episode")
@@ -39,9 +37,10 @@ public class EpisodeController {
     APIService apiService;
 
     @GetMapping
-    public List<EpisodeAPI> getAllEpisodes() {
-        return apiService.getAllEpisodes();
+    public List<EpisodeModel> getAllEpisodes() {
+        return episodeService.getAllEpisodes();
     }
+
 
     @GetMapping(path = "/{id}")
     public ResponseEntity getEpisodeById(@PathVariable("id") Long id) {
@@ -75,9 +74,6 @@ public class EpisodeController {
         return ResponseEntity.ok(episodeModel);
     }
 
-    @GetMapping(path = "test/{id}")
-    public ResponseEntity testEpisodyId(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(episodeService.getEpisodeById(id));
-    }
+
 
 }
